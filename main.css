@@ -1,0 +1,66 @@
+html, body {
+  height: 100%;
+  background-image: url('g.jpg');
+  background-size: cover;
+background-position: center;
+
+
+}
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-check {
+  margin: 0 1rem;
+}
+.d-flex > *:not(:last-child) {
+  margin-right: 1rem;
+}
+/* Add a background color to the body */
+body {
+  background-color: #f8f9fa;
+}
+/* Style the title */
+h1 {
+  font-size: 2.5rem;
+  font-family: impact;
+  margin: 2rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fafafa;
+  letter-spacing: 0.3em;
+  text-shadow: 3px 2px #06274a;
+}
+h1:hover{
+  color:#06274a;
+  text-shadow: 3px 2px white;
+}
+footer{
+  margin-top: 20pt;
+}
+/* Center the image container */
+#image-container {
+  text-align: center;
+}
+#image-container img {
+  max-width: 400px;
+  max-height: 400px; /* change this to your preferred height */
+  border: 1px solid #ccc; /* add a border */
+  border-radius: 5px; /* add a border-radius */
+}
+/* Style the class labels */
+#label-container div {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+/* Style the file input */
+#fileInput {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border: 2px solid #343a40;
+  border-radius: 0.25rem;
+  color: #343a40;
+  cursor: pointer;
+}
