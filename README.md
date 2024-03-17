@@ -35,7 +35,7 @@ To run this project, you need to have the following:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/nadsbalyamin/gtm/  
+git clone https://github.com/nadsbalyamin/gtm/
 ```
 
 2. Open the `index.html` file in your web browser.
