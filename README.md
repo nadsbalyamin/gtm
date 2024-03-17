@@ -38,8 +38,7 @@ To run this project, you need to have the following:
 git clone https://github.com/nadsbalyamin/gtm/
 ```
 
-2. Open the `index.html` file in your web browser.
-
+2. Open the `index.html` or `index-multi.html` file in your web browser.
 ## Update or Download the Model
 
 If you want to update the model with new images or retrain it with different categories, you can use Google Teachable Machine to create a new model and replace the existing model files in the `model` directory.
@@ -56,10 +55,10 @@ wget -O metadata.json https://teachablemachine.withgoogle.com/models/o2sXRpv64/m
 wget -O model.weights.bin https://teachablemachine.withgoogle.com/models/o2sXRpv64/model.weights.bin
 ```
 
-Also update offline scripts:
+Then update offline scripts:
 
 ```ps1
-cd assets/js
+cd ../assets/js
 ```
 
 Download the lastest GTM for offline use:
