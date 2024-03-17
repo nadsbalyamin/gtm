@@ -7,14 +7,15 @@ async function localModel() {
     // Path to the local model files
     const modelFile = "/model/model.json";
     const metadataFile = "/model/metadata.json";
-    const weightsFile = "/model/model.weights.bin";
+    // const weightsFile = "/model/model.weights.bin";
 
     // Check if local model files exist
     const modelExists = await checkFileExists(modelFile);
     const metadataExists = await checkFileExists(metadataFile);
-    const weightsExists = await checkFileExists(weightsFile);
+    // const weightsExists = await checkFileExists(weightsFile);
 
-    if (modelExists && metadataExists && weightsExists) {
+    if (modelExists && metadataExists //&& weightsExists
+      ) {
       // Load the local model
       const model = await tmImage.load(modelFile, metadataFile);
       console.log("Model, metadata, and weights exist.");
@@ -22,7 +23,7 @@ async function localModel() {
 
     } else {
       // Ask the user if they want to download the models
-      const downloadChoice = confirm("Do you want to download model files for faster loading time?");
+      const downloadChoice = confirm("Do you want to manually download model files for faster loading time?");
 
       if (downloadChoice) {
         // If the user chooses to download, redirect to README.md for instructions
@@ -34,7 +35,7 @@ async function localModel() {
         // Fetch the model online. Example using TensorFlow.js:
         const modelFile = modelURL + "model.json";
         const metadataFile = modelURL + "metadata.json";
-        const weightsFile = modelURL + "model.weights.bin";
+        // const weightsFile = modelURL + "model.weights.bin";
         const model = await tmImage.load(modelFile, metadataFile);
         console.log("Model fetched online.");
         return model;
