@@ -1,0 +1,76 @@
+html, body {
+  height: 100%;
+  background-image: url('../images/g.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+body {
+  min-height: 100%;
+  margin: 0; /* Remove default margin */
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f9fa;
+}
+
+.container {
+  flex: 1; /* Allows the container to expand, filling the available space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Ensure the container fills the width of the body */
+}
+
+/* Style the title */
+h1 {
+  font-size: 2.5rem;
+  font-family: impact;
+  margin: 2rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fafafa;
+  letter-spacing: 0.3em;
+  text-shadow: 3px 2px #06274a;
+}
+
+h1:hover{
+  color:#06274a;
+  text-shadow: 3px 2px white;
+}
+
+.row.justify-content-center.my-3 {
+  display: flex; /* This is likely already set by Bootstrap */
+  justify-content: center; /* This centers the children horizontally */
+  align-items: center; /* This centers the children vertically */
+  gap: 20px; /* Adjust the space between the children */
+  flex-wrap: wrap; /* Allows items to wrap if necessary */
+}
+
+
+/* Center the image container */
+#image-container {
+  text-align: center;
+}
+
+#image-container img {
+  max-width: 400px;
+  max-height: 400px; /* change this to your preferred height */
+  border: 1px solid #ccc; /* add a border */
+  border-radius: 5px; /* add a border-radius */
+}
+
+/* Style the class labels */
+#label-container div {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* Style updates for footer */
+footer {
+  /* background-color: #000; */
+  /* color: #fff; */
+  margin-top: 20pt;
+  text-align: center;
+  /* padding: 1rem 0; */
+  width: 100%; /* Ensure the footer fills the width of the body */
+}
