@@ -62,8 +62,7 @@ Also update offline scripts:
 cd assets/js
 ```
 
-Download the lastest GTM and TF:
+Download the lastest GTM for offline use:
 ```ps1
 wget -O teachablemachine-image.min.js https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js
-wget -O tf.min.js https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js
 ```
