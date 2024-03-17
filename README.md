@@ -45,13 +45,25 @@ git clone https://github.com/nadsbalyamin/gtm/
 If you want to update the model with new images or retrain it with different categories, you can use Google Teachable Machine to create a new model and replace the existing model files in the `model` directory.
 
 Then go to your working directory and run the following command:
-```bash
+```ps1
 cd model
 ```
 
 Download the new model files from Google Teachable Machine and replace the existing files:
-```bash
+```ps1
 wget -O model.json https://teachablemachine.withgoogle.com/models/o2sXRpv64/model.json
 wget -O metadata.json https://teachablemachine.withgoogle.com/models/o2sXRpv64/metadata.json
 wget -O model.weights.bin https://teachablemachine.withgoogle.com/models/o2sXRpv64/model.weights.bin
+```
+
+Also update offline scripts:
+
+```ps1
+cd assets/js
+```
+
+Download the lastest GTM and TF:
+```ps1
+wget -O teachablemachine-image.min.js https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js
+wget -O tf.min.js https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js
 ```
