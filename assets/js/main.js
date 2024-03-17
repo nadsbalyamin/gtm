@@ -13,6 +13,7 @@ async function setupModelAndPredict() {
 
   labelContainer = document.getElementById("label-container");
   labelContainer.innerHTML = ''; // Prepare label container
+
   for (let i = 0; i < maxPredictions; i++) {
     labelContainer.appendChild(document.createElement("div"));
   }
@@ -81,6 +82,7 @@ async function useWebcam() {
   await imageSource.play();
   await setupModelAndPredict();
   window.requestAnimationFrame(loop); // Start prediction loop for webcam
+
 }
 
 // Function to trigger the file input dialog
@@ -105,3 +107,18 @@ async function handleFileUpload(input) {
     };
   }
 }
+
+function reset() {
+  // stop the image source if it's a webcam
+  if (imageSource instanceof tmImage.Webcam) {
+    imageSource.stop();
+  }
+
+  // clear the image and label containers
+  imageContainer.innerHTML = "";
+  labelContainer.innerHTML = "";
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  setupModelAndPredict();
+});
