@@ -38,6 +38,14 @@ function displayPredictions(prediction) {
   labelContainer.firstChild.style.backgroundColor = "#000000"; // Black background for contrast
 }
 
+async function loop() {
+  if (imageSource instanceof tmImage.Webcam) { // Check if the source is webcam
+    imageSource.update(); // update the webcam frame
+    await predict(); // Separated prediction logic into its own function
+    window.requestAnimationFrame(loop); // Continue the loop only for webcam
+  }
+}
+
 async function useWebcam() {
   imageSource = new tmImage.Webcam(400, 400, true); // width, height, flip
   await imageSource.setup(); // request access to the webcam

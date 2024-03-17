@@ -38,7 +38,7 @@ h1:hover{
   text-shadow: 3px 2px white;
 }
 
-.col.justify-content-center.my-3 {
+.justify-content-center.my-3.image-label-container {
   display: flex; /* This is likely already set by Bootstrap */
   justify-content: center; /* This centers the children horizontally */
   align-items: center; /* This centers the children vertically */
@@ -46,13 +46,16 @@ h1:hover{
   flex-wrap: wrap; /* Allows items to wrap if necessary */
 }
 
-.container1 {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  overflow: auto; /* Adds scrolling within the container if the content exceeds viewport height */
+/* Default to row */
+#image-label-container {
+  flex-direction: row;
+}
+
+/* Switch to column layout on devices with height less than 850px */
+@media (max-height: 850px) {
+  #image-label-container {
+    flex-direction: column;
+  }
 }
 
 #image-container img {

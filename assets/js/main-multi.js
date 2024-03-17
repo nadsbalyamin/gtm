@@ -119,6 +119,6 @@ function reset() {
   labelContainer.innerHTML = "";
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
   setupModelAndPredict();
 });
