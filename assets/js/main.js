@@ -83,6 +83,6 @@ function reset() {
   labelContainer.innerHTML = "";
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  setupModelAndPredict();
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//   setupModelAndPredict();
+// });
