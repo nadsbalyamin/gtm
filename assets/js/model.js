@@ -1,13 +1,14 @@
 // Original source:
 const modelURL = "https://teachablemachine.withgoogle.com/models/o2sXRpv64/";
+const updateURL = "https://github.com/nadsbalyamin/gtm/?tab=readme-ov-file#update-or-download-the-model";
 
 // Fetch the local model
 async function localModel() {
   try {
     // Path to the local model files
-    const modelFile = "/model/model.json";
-    const metadataFile = "/model/metadata.json";
-    // const weightsFile = "/model/model.weights.bin";
+    const modelFile = "model/model.json";
+    const metadataFile = "model/metadata.json";
+    // const weightsFile = "model/model.weights.bin";
 
     // Check if local model files exist
     const modelExists = await checkFileExists(modelFile);
@@ -23,13 +24,10 @@ async function localModel() {
 
     } else {
       // Ask the user if they want to download the models
-      const downloadChoice = confirm("Do you want to manually download model files for faster loading time?");
+      const downloadChoice = confirm("Do you want to fetch the model online? If not, you will be redirected to the README.md for instructions.");
 
       if (downloadChoice) {
-        // If the user chooses to download, redirect to README.md for instructions
-        window.location.href = "README.md#update-or-download-the-model";
-      } else {
-        // If the user chooses not to download, attempt to fetch the model online
+        // If the user chooses to fetch, attempt to fetch the model online
         alert("Attempting to fetch the model online...");
 
         // Fetch the model online. Example using TensorFlow.js:
@@ -39,6 +37,9 @@ async function localModel() {
         const model = await tmImage.load(modelFile, metadataFile);
         console.log("Model fetched online.");
         return model;
+      } else {
+        // If the user chooses to download, redirect to README.md for instructions
+        window.location.href = updateURL;
       }
 
       // Return null to indicate that the model is either being fetched or the user is being redirected
