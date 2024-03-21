@@ -76,4 +76,8 @@ footer {
   text-align: center;
   /* padding: 1rem 0; */
   width: 100%; /* Ensure the footer fills the width of the body */
+  /* position: absolute; */
+  /* bottom: 0; 
+  left: 0; 
+  right: 0;  */
 }

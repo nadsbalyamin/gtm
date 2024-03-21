@@ -1,0 +1,49 @@
+/* Loader styles */
+/* #content {
+  flex: 1;
+  min-height: 50vh;
+} */
+
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #34db60; /* Text color */
+}
+
+.loading-circle {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #34db60;
+  width: 75px;
+  height: 75px;
+  animation: spin 1s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .loading-circle {
+      border-top: 10px solid #34db60;
+      max-width: 50px; /* Smaller size on smaller screens */
+      max-height: 50px; /* Smaller size on smaller screens */
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes load {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Hide loader and show content */
+/* .hidden {
+  display: none;
+} */
