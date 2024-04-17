@@ -67,7 +67,7 @@ async function useFlip() {
     imageContainer.appendChild(imageSource.canvas); // Append the new webcam canvas
 
     // Apply the 'flipped' class conditionally
-    if (currentFacingMode === 'user') {
+    if (currentFacingMode === 'environment') {
       imageContainer.classList.add('flipped');
     } else {
       imageContainer.classList.remove('flipped');
