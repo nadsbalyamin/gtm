@@ -48,7 +48,13 @@ async function loop() {
 
 async function useFlip() {
   if (imageSource instanceof tmImage.Webcam) {
-    imageSource.flip = !imageSource.flip; // Toggle the flip property
+    const imageContainer = document.getElementById('image-container');
+    // Check if the container already has the 'flipped' class
+    if (imageContainer.classList.contains('flipped')) {
+        imageContainer.classList.remove('flipped'); // Remove the flipped class if it exists
+    } else {
+        imageContainer.classList.add('flipped'); // Add the flipped class if it does not exist
+    }
   }
 }
 

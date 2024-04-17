@@ -58,6 +58,10 @@ h1:hover{
   overflow: auto; /* Adds scrolling within the container if the content exceeds viewport height */
 }
 
+.flipped {
+  transform: scaleX(-1);
+}
+
 /* .switch-button {
   background: rgba(255, 255, 255, 0.56);
   border-radius: 30px;
