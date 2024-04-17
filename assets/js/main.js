@@ -46,16 +46,28 @@ async function loop() {
   }
 }
 
+let currentFacingMode = "user"; // Default to front camera
+
 async function useFlip() {
-  if (imageSource instanceof tmImage.Webcam) {
-    const imageContainer = document.getElementById('image-container');
-    // Check if the container already has the 'flipped' class
-    if (imageContainer.classList.contains('flipped')) {
-        imageContainer.classList.remove('flipped'); // Remove the flipped class if it exists
-    } else {
-        imageContainer.classList.add('flipped'); // Add the flipped class if it does not exist
+    currentFacingMode = (currentFacingMode === 'user' ? 'environment' : 'user'); // Toggle facing mode
+
+    if (imageSource instanceof tmImage.Webcam) {
+        // Stop the current webcam
+        await imageSource.stop();
+
+        // Create a new instance of the webcam with the updated facing mode
+        imageSource = new tmImage.Webcam(400, 400, currentFacingMode); // Passing the facing mode (user or environment)
+
+        // Setup and play the new webcam
+        await imageSource.setup({ facingMode: currentFacingMode });
+        await imageSource.play();
+
+        // Update the UI to reflect the new webcam stream
+        imageContainer.innerHTML = ''; // Clear existing content
+        imageContainer.appendChild(imageSource.canvas); // Append the new webcam canvas
+
+        window.requestAnimationFrame(loop); // Continue with the animation frame loop
     }
-  }
 }
 
 async function useWebcam() {
