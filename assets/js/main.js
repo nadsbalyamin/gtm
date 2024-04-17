@@ -49,25 +49,32 @@ async function loop() {
 let currentFacingMode = "user"; // Default to front camera
 
 async function useFlip() {
-    currentFacingMode = (currentFacingMode === 'user' ? 'environment' : 'user'); // Toggle facing mode
+  currentFacingMode = (currentFacingMode === 'user' ? 'environment' : 'user'); // Toggle facing mode
 
-    if (imageSource instanceof tmImage.Webcam) {
-        // Stop the current webcam
-        await imageSource.stop();
+  if (imageSource instanceof tmImage.Webcam) {
+    // Stop the current webcam
+    await imageSource.stop();
 
-        // Create a new instance of the webcam with the updated facing mode
-        imageSource = new tmImage.Webcam(400, 400, currentFacingMode); // Passing the facing mode (user or environment)
+    // Create a new instance of the webcam with the updated facing mode
+    imageSource = new tmImage.Webcam(400, 400, currentFacingMode); // Passing the facing mode (user or environment)
 
-        // Setup and play the new webcam
-        await imageSource.setup({ facingMode: currentFacingMode });
-        await imageSource.play();
+    // Setup and play the new webcam
+    await imageSource.setup({ facingMode: currentFacingMode });
+    await imageSource.play();
 
-        // Update the UI to reflect the new webcam stream
-        imageContainer.innerHTML = ''; // Clear existing content
-        imageContainer.appendChild(imageSource.canvas); // Append the new webcam canvas
+    // Update the UI to reflect the new webcam stream
+    imageContainer.innerHTML = ''; // Clear existing content
+    imageContainer.appendChild(imageSource.canvas); // Append the new webcam canvas
 
-        window.requestAnimationFrame(loop); // Continue with the animation frame loop
+    // Apply the 'flipped' class conditionally
+    if (currentFacingMode === 'user') {
+      imageContainer.classList.add('flipped');
+    } else {
+      imageContainer.classList.remove('flipped');
     }
+
+    window.requestAnimationFrame(loop); // Continue with the animation frame loop
+  }
 }
 
 async function useWebcam() {
