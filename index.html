@@ -20,8 +20,14 @@
     <div class="container">
       <div class="row mb-3 justify-content-center">
         <div class="col-auto">
+          <!-- <div class="switch-button">
+            <input class="switch-button-checkbox" type="checkbox"></input>
+            <label class="switch-button-label" for=""><span class="switch-button-label-span">Live</span></label>
+          </div> -->
           <input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="handleFileUpload(this)"/>
+          <button class="btn btn-secondary" id="switchButton" onclick="useSwitch()">Switch</button>
           <button class="btn btn-primary" id="webcamButton" onclick="useWebcam()">Use Webcam</button>
+          <!-- &nbsp;&nbsp; -->
           <button class="btn btn-success" id="uploadButton" onclick="triggerFileUpload()">Upload Image</button>
         </div>
       </div>
@@ -39,7 +45,7 @@
   <footer class="margin-top-auto bg-dark text-white py-3">
     <div class="container text-center">
       <p>&copy; 2024 Solid Waste Recycling Sorter</p>
-      <p>Developed by: Balyamin, Ferrater, Laluna, Masuara, Tedor, Visiete</p>
+      <p>Developed by: Balyamin, Ferrater, Laluna, Masuara, Tedor, Vesiete</p>
       <p>BSIT-3: AI MSU GENSAN</p>
     </div>
   </footer>
@@ -47,6 +53,7 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script> -->
   <script src="assets/js/teachablemachine-image.min.js"></script>
   <script type="text/javascript" src="assets/js/model.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.3.1.1.min.js"></script>
   <script type="text/javascript" src="assets/js/main.js"></script>
   <!-- <script type="text/javascript" src="assets/js/load.js"></script> -->
 </body>

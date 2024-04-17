@@ -46,13 +46,51 @@ async function loop() {
   }
 }
 
-async function useWebcam() {
-  imageSource = new tmImage.Webcam(400, 400, true); // width, height, flip
-  await imageSource.setup(); // request access to the webcam
-  await imageSource.play();
-  await setupModelAndPredict();
-  window.requestAnimationFrame(loop); // Start prediction loop for webcam
+// async function useWebcam() {
+//   imageSource = new tmImage.Webcam(400, 400, true); // width, height, flip
+//   await imageSource.setup(); // request access to the webcam
+//   await imageSource.play();
+//   await setupModelAndPredict();
+//   window.requestAnimationFrame(loop); // Start prediction loop for webcam
+// }
+
+let currentDeviceId = null;
+let allVideoDevices = [];
+
+async function setupCameraDevices() {
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    allVideoDevices = devices.filter(device => device.kind === 'videoinput');
+    if (allVideoDevices.length > 0) {
+        currentDeviceId = allVideoDevices[0].deviceId; // Initially use the first camera
+        await useWebcam(currentDeviceId); // Start using the camera
+    }
 }
+
+async function useSwitch() {
+    const currentIndex = allVideoDevices.findIndex(device => device.deviceId === currentDeviceId);
+    const nextIndex = (currentIndex + 1) % allVideoDevices.length;
+    currentDeviceId = allVideoDevices[nextIndex].deviceId;
+    await useWebcam(currentDeviceId); // Switch to the next camera
+}
+
+async function useWebcam(deviceId) {
+    if (imageSource instanceof tmImage.Webcam) {
+        imageSource.stop(); // Stop the current webcam stream
+    }
+    const videoConstraints = {
+        width: 400,
+        height: 400,
+        deviceId: { exact: deviceId } // Request the specific device
+    };
+    imageSource = new tmImage.Webcam(400, 400, true, videoConstraints); // Create a new webcam instance
+    await imageSource.setup(); // Setup the webcam
+    await imageSource.play();
+    await setupModelAndPredict();
+    window.requestAnimationFrame(loop); // Start the prediction loop for the webcam
+}
+
+// Initialize camera setup on load
+document.addEventListener('DOMContentLoaded', setupCameraDevices);
 
 function triggerFileUpload() {
   document.getElementById('fileInput').click(); // Trigger file input
@@ -85,4 +123,12 @@ function reset() {
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   setupModelAndPredict();
+// });
+
+// $('.switch input').on('change', function(){
+//   var dad = $(this).parent();
+//   if($(this).is(':checked'))
+//     dad.addClass('switch-checked');
+//   else
+//     dad.removeClass('switch-checked');
 // });
